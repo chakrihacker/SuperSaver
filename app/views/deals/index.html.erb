@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Deals</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Deal type</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Vendor</th>
+      <th>Is local deal</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Status</th>
+      <th>End date</th>
+      <th>Min price</th>
+      <th>Cashback</th>
+      <th>User</th>
+      <th>Category</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @deals.each do |deal| %>
+      <tr>
+        <td><%= deal.deal_type %></td>
+        <td><%= deal.name %></td>
+        <td><%= deal.description %></td>
+        <td><%= deal.vendor %></td>
+        <td><%= deal.is_local_deal %></td>
+        <td><%= deal.latitude %></td>
+        <td><%= deal.longitude %></td>
+        <td><%= deal.status %></td>
+        <td><%= deal.end_date %></td>
+        <td><%= deal.min_price %></td>
+        <td><%= deal.cashback %></td>
+        <td><%= deal.user_id %></td>
+        <td><%= deal.category_id %></td>
+        <td><%= link_to 'Show', deal %></td>
+        <td><%= link_to 'Edit', edit_deal_path(deal) %></td>
+        <td><%= link_to 'Destroy', deal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Deal', new_deal_path %>

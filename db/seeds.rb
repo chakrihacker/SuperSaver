@@ -65,3 +65,32 @@ Category.create([
 Category.create([{ name: 'Movies', parent_id: categories.fifth.id },
                  { name: 'Games', parent_id: categories.fifth.id },
                  { name: 'Events', parent_id: categories.fifth.id }])
+
+##############################################################################
+
+Rails.logger.info '3. Creating Deals'
+
+Deal.destroy_all
+
+deal_types = %w[Coupon Membership GiveAway]
+
+100.times do
+  is_local_deal = Faker::Boolean.boolean
+  Deal.create!(
+    deal_type: deal_types.sample,
+    name: Faker::Lorem.sentence(word_count: 3, supplemental: false, random_words_to_add: 4 ),
+    description: Faker::Lorem.paragraph(sentence_count: 5),
+    vendor: Faker::Company.name,
+    is_local_deal: is_local_deal,
+    latitude: is_local_deal ? Faker::Address.latitude : nil,
+    longitude: is_local_deal ? Faker::Address.longitude : nil,
+    status: true,
+    end_date: Faker::Date.forward(days: 365),
+    min_price: Faker::Number.between(from: 100, to: 10000),
+    cashback: Faker::Number.between(from: 50, to: 4000).to_s,
+    user_id: User.order(Arel.sql("RANDOM()")).first.id,
+    category_id: Category.order(Arel.sql("RANDOM()")).first.id
+  )
+end
+
+##############################################################################

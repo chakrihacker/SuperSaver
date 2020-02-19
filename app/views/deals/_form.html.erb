@@ -1,0 +1,82 @@
+<%= form_with(model: deal, local: true) do |form| %>
+  <% if deal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(deal.errors.count, "error") %> prohibited this deal from being saved:</h2>
+
+      <ul>
+        <% deal.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :deal_type %>
+    <%= form.text_field :deal_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :vendor %>
+    <%= form.text_field :vendor %>
+  </div>
+
+  <div class="field">
+    <%= form.label :is_local_deal %>
+    <%= form.check_box :is_local_deal %>
+  </div>
+
+  <div class="field">
+    <%= form.label :latitude %>
+    <%= form.text_field :latitude %>
+  </div>
+
+  <div class="field">
+    <%= form.label :longitude %>
+    <%= form.text_field :longitude %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.check_box :status %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end_date %>
+    <%= form.datetime_select :end_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :min_price %>
+    <%= form.text_field :min_price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cashback %>
+    <%= form.text_field :cashback %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :category_id %>
+    <%= form.text_field :category_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

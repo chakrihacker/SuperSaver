@@ -1,0 +1,31 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  deal_type: MyString
+  name: MyString
+  description: MyString
+  vendor: MyString
+  is_local_deal: false
+  latitude: 9.99
+  longitude: 9.99
+  status: false
+  end_date: 2020-02-20 03:02:05
+  min_price: 9.99
+  cashback: MyString
+  user: one
+  category: one
+
+two:
+  deal_type: MyString
+  name: MyString
+  description: MyString
+  vendor: MyString
+  is_local_deal: false
+  latitude: 9.99
+  longitude: 9.99
+  status: false
+  end_date: 2020-02-20 03:02:05
+  min_price: 9.99
+  cashback: MyString
+  user: two
+  category: two

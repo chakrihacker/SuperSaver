@@ -1,0 +1,69 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Deal type:</strong>
+  <%= @deal.deal_type %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @deal.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @deal.description %>
+</p>
+
+<p>
+  <strong>Vendor:</strong>
+  <%= @deal.vendor %>
+</p>
+
+<p>
+  <strong>Is local deal:</strong>
+  <%= @deal.is_local_deal %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @deal.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @deal.longitude %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @deal.status %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @deal.end_date %>
+</p>
+
+<p>
+  <strong>Min price:</strong>
+  <%= @deal.min_price %>
+</p>
+
+<p>
+  <strong>Cashback:</strong>
+  <%= @deal.cashback %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @deal.user_id %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @deal.category_id %>
+</p>
+
+<%= link_to 'Edit', edit_deal_path(@deal) %> |
+<%= link_to 'Back', deals_path %>

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   
   resources :categories
+  resources :deals
   
   get 'welcome/index'
   get 'home/index'

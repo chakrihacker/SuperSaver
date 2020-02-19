@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_19_205448) do
+ActiveRecord::Schema.define(version: 2020_02_19_213205) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,26 @@ ActiveRecord::Schema.define(version: 2020_02_19_205448) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["parent_id"], name: "index_categories_on_parent_id"
+  end
+
+  create_table "deals", force: :cascade do |t|
+    t.string "deal_type"
+    t.string "name"
+    t.string "description"
+    t.string "vendor"
+    t.boolean "is_local_deal"
+    t.decimal "latitude", precision: 10, scale: 6
+    t.decimal "longitude", precision: 10, scale: 6
+    t.boolean "status"
+    t.datetime "end_date"
+    t.decimal "min_price"
+    t.string "cashback"
+    t.bigint "user_id", null: false
+    t.bigint "category_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_deals_on_category_id"
+    t.index ["user_id"], name: "index_deals_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -53,4 +73,6 @@ ActiveRecord::Schema.define(version: 2020_02_19_205448) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "deals", "categories"
+  add_foreign_key "deals", "users"
 end
