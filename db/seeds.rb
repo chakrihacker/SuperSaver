@@ -5,3 +5,18 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+##############################################################################
+
+Rails.logger.info '1. Creating users'
+
+10.times do
+  User.create!(
+    name: Faker::Name.name,
+    email: Faker::Internet.email,
+    password: 'password',
+    confirmed_at: Time.current,
+    latitude: Faker::Address.latitude,
+    longitude: Faker::Address.longitude
+  )
+end
