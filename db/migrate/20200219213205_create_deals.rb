@@ -12,7 +12,7 @@ class CreateDeals < ActiveRecord::Migration[6.0]
       t.datetime :end_date
       t.decimal :min_price
       t.string :cashback
-      t.references :user, null: false, foreign_key: true
+      t.references :user, null: false, foreign_key: { on_delete: :cascade } 
       t.references :category, null: false, foreign_key: true
 
       t.timestamps

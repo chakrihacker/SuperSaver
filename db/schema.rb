@@ -107,7 +107,7 @@ ActiveRecord::Schema.define(version: 2020_02_19_220355) do
   add_foreign_key "conversation_memberships", "conversations"
   add_foreign_key "conversation_memberships", "users"
   add_foreign_key "deals", "categories"
-  add_foreign_key "deals", "users"
+  add_foreign_key "deals", "users", on_delete: :cascade
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
 end

@@ -11,6 +11,11 @@
 Rails.logger.info '1. Creating users'
 
 User.destroy_all
+Deal.destroy_all
+Category.destroy_all
+Conversation.destroy_all
+ConversationMembership.destroy_all
+Message.destroy_all
 
 10.times do
   User.create!(
@@ -26,8 +31,6 @@ end
 ##############################################################################
 
 Rails.logger.info '2. Creating Categories'
-
-Category.destroy_all
 
 categories = Category.create([
                                { name: 'Travel' },
@@ -70,8 +73,6 @@ Category.create([{ name: 'Movies', parent_id: categories.fifth.id },
 
 Rails.logger.info '3. Creating Deals'
 
-Deal.destroy_all
-
 deal_types = %w[Coupon Membership GiveAway]
 
 100.times do
@@ -94,3 +95,35 @@ deal_types = %w[Coupon Membership GiveAway]
 end
 
 ##############################################################################
+
+Rails.logger.info '4. Creating Conversations'
+
+25.times do
+  deal = Deal.order(Arel.sql("RANDOM()")).first.id
+  users = User.order(Arel.sql("RANDOM()"))
+  first_user = users.first.id
+  second_user = users.second.id
+  conversation = Conversation.create!(
+    conversation_name: Faker::DcComics.title,
+    conversation_type: "direct",
+    slug: deal.to_s + "/" + first_user.to_s,
+    status: "active"
+  )
+  ConversationMembership.create!(
+    conversation_id: conversation.id,
+    user_id: first_user
+  )
+  ConversationMembership.create!(
+    conversation_id: conversation.id,
+    user_id: second_user
+  )
+
+  25.times do
+    Message.create!(
+      content: Faker::Lorem.sentence,
+      conversation_id: conversation.id,
+      user_id: [first_user, second_user].sample
+    )
+  end
+  
+end
