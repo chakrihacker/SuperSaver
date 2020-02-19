@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   
   resources :categories
   resources :deals
+  resources :messages
+  resources :conversation_memberships
+  resources :conversations
   
   get 'welcome/index'
   get 'home/index'

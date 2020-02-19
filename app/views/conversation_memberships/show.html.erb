@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Conversation:</strong>
+  <%= @conversation_membership.conversation_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @conversation_membership.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_conversation_membership_path(@conversation_membership) %> |
+<%= link_to 'Back', conversation_memberships_path %>
