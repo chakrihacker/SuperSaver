@@ -28,7 +28,9 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
+gem "aws-sdk-s3", require: false # Official AWS Ruby gem for Amazon Simple Storage Service (Amazon S3).
 gem 'devise' # Flexible authentication solution for Rails with Warden
+gem 'figaro' # Simple, Heroku-friendly Rails app configuration using ENV and a single YAML file
 gem 'pg' # Pg is the Ruby interface to the {PostgreSQL RDBMS}
 
 group :development, :test do
@@ -38,12 +40,12 @@ end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'faker' # Faker is used to easily generate fake data: names, addresses, phone numbers, etc.
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'faker' # Faker is used to easily generate fake data: names, addresses, phone numbers, etc.
 end
 
 group :test do
