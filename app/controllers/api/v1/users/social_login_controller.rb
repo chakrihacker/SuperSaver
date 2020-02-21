@@ -11,10 +11,4 @@ class Api::V1::Users::SocialLoginController < Api::BaseController
     end
     render action_name, status: status
   end
-
-  protected
-
-  def test_facebook_login
-    OmniAuth::Strategies
-  end
 end
