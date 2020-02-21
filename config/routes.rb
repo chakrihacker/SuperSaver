@@ -17,6 +17,15 @@ Rails.application.routes.draw do
   resources :messages
   resources :conversation_memberships
   resources :conversations
+
+  scope 'api' do
+    scope 'v1' do
+      resources :deals, only: [:show, :index, :create]
+      resources :categories, only: [:show, :index]
+      resources :conversations
+      post "/conversations/create_chat", to: "conversations#create_chat"
+    end
+  end
   
   get 'welcome/index'
   get "home", to: "home#index"
