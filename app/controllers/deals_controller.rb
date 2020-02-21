@@ -7,7 +7,7 @@ class DealsController < ApplicationController
   # GET /deals
   # GET /deals.json
   def index
-    @deals = Deal.all
+    @deals = Deal.order(created_at: :desc).page(params[:page].to_i)
   end
 
   # GET /deals/1
