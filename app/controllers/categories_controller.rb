@@ -1,6 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
-  skip_before_action :authenticate_user_for_api
+  skip_before_action :authenticate_user_for_api, only: [:index]
   # before_action :authenticate_user_for_api, except: [:index]
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
@@ -13,6 +12,8 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
+    # Grab all sub-categories
+    @subcategories = Category.where(parent_id: params[:id])
   end
 
   # GET /categories/new

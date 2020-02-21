@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session,
-                       unless: -> { request.env['REQUEST_PATH'] =~ /^\/api/ }
+                       unless: -> { request.format.json? }
 
   before_action :authenticate_user!, unless: :json_request?
   before_action :authenticate_user_for_api, if: :json_request?

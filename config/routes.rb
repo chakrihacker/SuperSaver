@@ -22,6 +22,8 @@ Rails.application.routes.draw do
     scope 'v1' do
       resources :deals, only: [:show, :index, :create]
       resources :categories, only: [:show, :index]
+      resources :messages
+      resources :conversation_memberships
       resources :conversations
       post "/conversations/create_chat", to: "conversations#create_chat"
     end

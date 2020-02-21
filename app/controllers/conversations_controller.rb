@@ -1,17 +1,18 @@
-class ConversationsController < ApplicationController
-  before_action :set_conversation, only: [:show, :edit, :update, :destroy]
-  skip_before_action :authenticate_user_for_api
-  # before_action :authenticate_user_for_api, except: [:index]
+# frozen_string_literal: true
 
+class ConversationsController < ApplicationController
+  before_action :set_conversation, only: %i[show edit update destroy]
+  before_action :authenticate_user_for_api
   # GET /conversations
   # GET /conversations.json
   def index
-    @conversations = Conversation.all
+    @conversations = @current_user.conversations
   end
 
   # GET /conversations/1
   # GET /conversations/1.json
   def show
+    @messages = @conversation.messages.order("created_at DESC").limit(150)
   end
 
   # GET /conversations/new
@@ -63,14 +64,32 @@ class ConversationsController < ApplicationController
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_conversation
-      @conversation = Conversation.find(params[:id])
-    end
+  def create_chat
+    conversation_recipient = User.find(params[:user_id])
+    slug = params[:deal_id].to_s + '/' + current_user.id.to_s
+    conversation = Conversation.create_with_users(
+      [current_user, conversation_recipient],
+      slug
+    )
+    message = Message.new(
+      user_id: current_user.id,
+      conversation_id: conversation.id,
+      content: params[:content]
+    )
+    conversation.messages.append(message)
+    render json: { status: 'success', message: 'chat conversation created!' },
+           status: :ok
+  end
 
-    # Only allow a list of trusted parameters through.
-    def conversation_params
-      params.require(:conversation).permit(:conversation_name, :conversation_type, :slug, :description, :status)
-    end
+  private
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_conversation
+    @conversation = Conversation.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def conversation_params
+    params.require(:conversation).permit(:conversation_name, :conversation_type, :slug, :description, :status)
+  end
 end

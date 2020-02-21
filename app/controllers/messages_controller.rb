@@ -1,8 +1,6 @@
 class MessagesController < ApplicationController
   before_action :set_message, only: [:show, :edit, :update, :destroy]
-  skip_before_action :authenticate_user_for_api
-  # before_action :authenticate_user_for_api, except: [:index]
-
+  before_action :authenticate_user_for_api
   # GET /messages
   # GET /messages.json
   def index
@@ -27,6 +25,7 @@ class MessagesController < ApplicationController
   # POST /messages.json
   def create
     @message = Message.new(message_params)
+    @message.user_id = @current_user.id
 
     respond_to do |format|
       if @message.save
