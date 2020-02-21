@@ -1,5 +1,7 @@
 class MessagesController < ApplicationController
   before_action :set_message, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user_for_api
+  # before_action :authenticate_user_for_api, except: [:index]
 
   # GET /messages
   # GET /messages.json

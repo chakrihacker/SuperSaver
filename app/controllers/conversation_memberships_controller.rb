@@ -1,5 +1,7 @@
 class ConversationMembershipsController < ApplicationController
   before_action :set_conversation_membership, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user_for_api
+  # before_action :authenticate_user_for_api, except: [:index]
 
   # GET /conversation_memberships
   # GET /conversation_memberships.json

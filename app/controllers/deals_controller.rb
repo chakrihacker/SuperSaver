@@ -1,5 +1,7 @@
 class DealsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
+  skip_before_action :authenticate_user_for_api
+  # before_action :authenticate_user_for_api, except: [:index]
   before_action :set_deal, only: [:show, :edit, :update, :destroy]
 
   # GET /deals
