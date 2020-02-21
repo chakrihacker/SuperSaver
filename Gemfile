@@ -31,7 +31,11 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem "aws-sdk-s3", require: false # Official AWS Ruby gem for Amazon Simple Storage Service (Amazon S3).
 gem 'devise' # Flexible authentication solution for Rails with Warden
 gem 'figaro' # Simple, Heroku-friendly Rails app configuration using ENV and a single YAML file
+gem 'jwt' # A pure ruby implementation of the RFC 7519 OAuth JSON Web Token (JWT) standard.
+gem 'omniauth' # A generalized Rack framework for multiple-provider authentication.
+gem 'omniauth-facebook' # Facebook OAuth2 Strategy for OmniAuth
 gem 'pg' # Pg is the Ruby interface to the {PostgreSQL RDBMS}
+gem 'simple_command' # Easy way to build and manage commands (service objects)
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
