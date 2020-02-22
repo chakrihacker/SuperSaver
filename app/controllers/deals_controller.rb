@@ -1,11 +1,19 @@
 class DealsController < ApplicationController
   before_action :authenticate_user_for_api, except: [:index]
   before_action :set_deal, only: [:show, :edit, :update, :destroy]
+  after_action only: [:index] do
+    set_pagination_header(:deals)
+  end
 
   # GET /deals
   # GET /deals.json
   def index
-    @deals = Deal.order(created_at: :desc).page(params[:page].to_i)
+    if params[:user]
+      target = User.find(params[:user])
+      @deals = target.deals.order(created_at: :desc).page(params[:page].to_i)
+    else
+      @deals = Deal.order(created_at: :desc).page(params[:page].to_i)
+    end
   end
 
   # GET /deals/1
