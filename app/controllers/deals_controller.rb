@@ -25,7 +25,7 @@ class DealsController < ApplicationController
   # POST /deals
   # POST /deals.json
   def create
-    @deal = Deal.new(deal_params)
+    @deal = Deal.new(deal_params.merge(user_id: current_user.id))
 
     respond_to do |format|
       if @deal.save
