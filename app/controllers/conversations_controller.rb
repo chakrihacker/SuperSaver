@@ -12,7 +12,7 @@ class ConversationsController < ApplicationController
   # GET /conversations/1
   # GET /conversations/1.json
   def show
-    @messages = @conversation.messages.order("created_at DESC").limit(150)
+    @messages = @conversation.messages.order('created_at DESC').limit(150)
   end
 
   # GET /conversations/new
@@ -69,7 +69,8 @@ class ConversationsController < ApplicationController
     slug = params[:deal_id].to_s + '/' + current_user.id.to_s
     conversation = Conversation.create_with_users(
       [current_user, conversation_recipient],
-      slug
+      slug,
+      params.fetch(:description, '')
     )
     message = Message.new(
       user_id: current_user.id,
@@ -77,7 +78,7 @@ class ConversationsController < ApplicationController
       content: params[:content]
     )
     conversation.messages.append(message)
-    render json: { status: 'success', message: 'chat conversation created!' },
+    render json: { status: :ok, conversation: conversation },
            status: :ok
   end
 

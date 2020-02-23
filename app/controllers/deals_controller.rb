@@ -8,9 +8,12 @@ class DealsController < ApplicationController
   # GET /deals
   # GET /deals.json
   def index
-    if params[:user]
-      target = User.find(params[:user])
+    if params[:user_id]
+      target = User.find(params[:user_id])
       @deals = target.deals.order(created_at: :desc).page(params[:page].to_i)
+    elsif params[:category_id]
+      category = Category.find(params[:category_id])
+      @deals = category.deals.order(created_at: :desc).page(params[:page].to_i)
     else
       @deals = Deal.order(created_at: :desc).page(params[:page].to_i)
     end
