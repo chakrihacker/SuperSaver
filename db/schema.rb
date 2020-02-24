@@ -76,7 +76,8 @@ ActiveRecord::Schema.define(version: 2020_02_20_155933) do
     t.boolean "status"
     t.datetime "end_date"
     t.decimal "min_price"
-    t.string "cashback"
+    t.decimal "cash_back"
+    t.decimal "selling_price"
     t.bigint "user_id", null: false
     t.bigint "category_id", null: false
     t.datetime "created_at", precision: 6, null: false

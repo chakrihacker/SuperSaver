@@ -11,7 +11,8 @@ one:
   status: false
   end_date: 2020-02-20 03:02:05
   min_price: 9.99
-  cashback: MyString
+  cash_back: 9.99
+  selling_price: 9.99
   user: one
   category: one
 
@@ -26,6 +27,7 @@ two:
   status: false
   end_date: 2020-02-20 03:02:05
   min_price: 9.99
-  cashback: MyString
+  cash_back: 9.99
+  selling_price: 9.99
   user: two
   category: two

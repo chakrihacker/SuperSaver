@@ -17,7 +17,7 @@ class DealsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create deal" do
     assert_difference('Deal.count') do
-      post deals_url, params: { deal: { cashback: @deal.cashback, category_id: @deal.category_id, deal_type: @deal.deal_type, description: @deal.description, end_date: @deal.end_date, is_local_deal: @deal.is_local_deal, latitude: @deal.latitude, longitude: @deal.longitude, min_price: @deal.min_price, name: @deal.name, status: @deal.status, user_id: @deal.user_id, vendor: @deal.vendor } }
+      post deals_url, params: { deal: { cash_back: @deal.cash_back, selling_price: @deal.selling_price, category_id: @deal.category_id, deal_type: @deal.deal_type, description: @deal.description, end_date: @deal.end_date, is_local_deal: @deal.is_local_deal, latitude: @deal.latitude, longitude: @deal.longitude, min_price: @deal.min_price, name: @deal.name, status: @deal.status, user_id: @deal.user_id, vendor: @deal.vendor } }
     end
 
     assert_redirected_to deal_url(Deal.last)
@@ -34,7 +34,7 @@ class DealsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update deal" do
-    patch deal_url(@deal), params: { deal: { cashback: @deal.cashback, category_id: @deal.category_id, deal_type: @deal.deal_type, description: @deal.description, end_date: @deal.end_date, is_local_deal: @deal.is_local_deal, latitude: @deal.latitude, longitude: @deal.longitude, min_price: @deal.min_price, name: @deal.name, status: @deal.status, user_id: @deal.user_id, vendor: @deal.vendor } }
+    patch deal_url(@deal), params: { deal: { cash_back: @deal.cash_back, selling_price: @deal.selling_price, category_id: @deal.category_id, deal_type: @deal.deal_type, description: @deal.description, end_date: @deal.end_date, is_local_deal: @deal.is_local_deal, latitude: @deal.latitude, longitude: @deal.longitude, min_price: @deal.min_price, name: @deal.name, status: @deal.status, user_id: @deal.user_id, vendor: @deal.vendor } }
     assert_redirected_to deal_url(@deal)
   end
 

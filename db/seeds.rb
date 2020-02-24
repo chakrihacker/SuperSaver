@@ -101,7 +101,8 @@ deal_types = %w[Coupon Membership GiveAway]
     status: true,
     end_date: Faker::Date.forward(days: 365),
     min_price: Faker::Number.between(from: 100, to: 10_000),
-    cashback: Faker::Number.between(from: 50, to: 4000).to_s,
+    cash_back: Faker::Number.between(from: 50, to: 4000),
+    selling_price: Faker::Number.between(from: 100, to: 10_000),
     user_id: User.order(Arel.sql('RANDOM()')).first.id,
     category_id: Category.order(Arel.sql('RANDOM()')).first.id
   )

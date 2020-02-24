@@ -14,7 +14,8 @@ class DealsTest < ApplicationSystemTestCase
     visit deals_url
     click_on "New Deal"
 
-    fill_in "Cashback", with: @deal.cashback
+    fill_in "Cashback", with: @deal.cash_back
+    fill_in "Sellingprice", with: @deal.selling_price
     fill_in "Category", with: @deal.category_id
     fill_in "Deal type", with: @deal.deal_type
     fill_in "Description", with: @deal.description
@@ -37,7 +38,8 @@ class DealsTest < ApplicationSystemTestCase
     visit deals_url
     click_on "Edit", match: :first
 
-    fill_in "Cashback", with: @deal.cashback
+    fill_in "Cashback", with: @deal.cash_back
+    fill_in "Sellingprice", with: @deal.selling_price
     fill_in "Category", with: @deal.category_id
     fill_in "Deal type", with: @deal.deal_type
     fill_in "Description", with: @deal.description
