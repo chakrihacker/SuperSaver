@@ -29,6 +29,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'aws-sdk-s3', require: false # Official AWS Ruby gem for Amazon Simple Storage Service (Amazon S3).
 gem 'devise' # Flexible authentication solution for Rails with Warden
 gem 'figaro' # Simple, Heroku-friendly Rails app configuration using ENV and a single YAML file
+gem 'httparty' # Makes http fun again!
 gem 'jwt' # A pure ruby implementation of the RFC 7519 OAuth JSON Web Token (JWT) standard.
 gem 'kaminari' # Kaminari is a Scope & Engine based, clean, powerful, agnostic, customizable and sophisticated paginator for Rails 4+
 gem 'omniauth' # A generalized Rack framework for multiple-provider authentication.
