@@ -45,10 +45,18 @@ class Api::V1::Users::SocialLoginController < Api::BaseController
         return { errors: { 'error': 'Something went wrong here' } }
       end
     end
-    { errors: { 'error': 'Something went wrong here 2' } }
+    { errors: { 'error': 'Something went wrong here' } }
   end
 
   def facebook_verification(token)
-    puts "facebook verification #{token}"
+    access_token = "#{ENV['FACEBOOK_APP_ID']}|#{ENV['FACEBOOK_APP_SECRET']}"
+    is_token_valid = HTTParty.get("https://graph.facebook.com/debug_token?input_token=#{token}&access_token=#{access_token}")
+    parsed_response = is_token_valid.parsed_response
+    unless parsed_response.dig(:data, :app_id) == ENV['FACEBOOK_APP_ID']
+      user_info = HTTParty.get("https://graph.facebook.com/me?fields=id,name,email&access_token=#{token}")
+      puts user_info.parsed_response
+      return user_info.parsed_response unless user_info.parsed_response['email'].nil?
+    end
+    { errors: { 'error': 'Something went wrong here' } }
   end
 end
