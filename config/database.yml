@@ -24,3 +24,7 @@ test:
 production:
   <<: *default
   database: supersaver
+  username: <%= ENV["POSTGRES_USERNAME"] %>
+  password: <%= ENV["POSTGRES_PASSWORD"] %>
+  host: <%= ENV["POSTGRES_HOSTNAME"] %>
+  port: <%= ENV["POSTGRES_PORT"] %>
