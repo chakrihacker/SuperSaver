@@ -12,6 +12,8 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
+    # Find the category belonging to the given id
+    @category = Category.find(params[:id])
     # Grab all sub-categories
     @subcategories = Category.where(parent_id: params[:id])
   end
@@ -19,10 +21,12 @@ class CategoriesController < ApplicationController
   # GET /categories/new
   def new
     @category = Category.new
+    @categories = Category.where(parent_id: nil)
   end
 
   # GET /categories/1/edit
   def edit
+    @categories = Category.where(parent_id: nil)
   end
 
   # POST /categories
@@ -66,13 +70,14 @@ class CategoriesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_category
-      @category = Category.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def category_params
-      params.require(:category).permit(:name, :parent_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_category
+    @category = Category.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def category_params
+    params.require(:category).permit(:name, :parent_id, :icon)
+  end
 end

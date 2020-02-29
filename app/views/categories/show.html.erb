@@ -1,14 +1,40 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Category:</strong>
   <%= @category.name %>
+  <% if @category.icon.attached? %>
+  <p>
+    <strong>Icon</strong>
+  </p>
+  <%= image_tag @category.icon %>
+<% end %>
 </p>
 
-<p>
-  <strong>Parent:</strong>
-  <%= @category.parent_id %>
-</p>
+<% if !@subcategories.empty? %>
+  <h3>Sub categories:</h3>
+  <table>
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Parent</th>
+      <th colspan="3"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @subcategories.each do |subcategory| %>
+      <tr>
+        <td><%= subcategory.name %></td>
+        <td><%= subcategory.parent_id %></td>
+        <td><%= link_to 'Show', subcategory %></td>
+        <td><%= link_to 'Edit', edit_category_path(subcategory) %></td>
+        <td><%= link_to 'Destroy', subcategory, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>
 
 <%= link_to 'Edit', edit_category_path(@category) %> |
 <%= link_to 'Back', categories_path %>

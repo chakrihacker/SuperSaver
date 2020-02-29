@@ -18,7 +18,12 @@
 
   <div class="field">
     <%= form.label :parent_id %>
-    <%= form.text_field :parent_id %>
+    <%= form.collection_select :parent_id, categories, :id, :name, include_blank: true, :selected => category.parent_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :icon %>
+    <%= form.file_field :icon %>
   </div>
 
   <div class="actions">

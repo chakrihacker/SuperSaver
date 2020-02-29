@@ -1,1 +1,1 @@
-<h1>Home <%= current_user.name %> ! </h1>
+<h1>Home <%= current_user.name unless current_user.nil? %> ! </h1>
