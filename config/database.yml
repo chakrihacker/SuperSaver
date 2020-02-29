@@ -28,3 +28,4 @@ production:
   password: <%= ENV["POSTGRES_PASSWORD"] %>
   host: <%= ENV["POSTGRES_HOSTNAME"] %>
   port: <%= ENV["POSTGRES_PORT"] %>
+  sslmode: require

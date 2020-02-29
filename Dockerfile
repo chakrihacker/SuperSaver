@@ -5,7 +5,12 @@ RUN apk update \
 && apk upgrade \
 && apk add --update --no-cache \
 build-base postgresql-dev \
-tzdata nodejs yarn
+tzdata nodejs yarn openssh openrc
+
+# Setup ssh
+ENV SSH_PASSWD "root:Docker!"
+RUN echo "$SSH_PASSWD" | chpasswd
+COPY sshd_config /etc/ssh/
 
 # Set an environment variable where the Rails app is installed to inside of Docker image:
 ENV RAILS_ROOT /super-rails
@@ -28,8 +33,13 @@ RUN bundle install
 # Adding project files
 COPY . $RAILS_ROOT
 
-# compile rails assets
+# clean and compile rails assets
+# RUN bin/rails assets:clean
 RUN bin/rails assets:precompile
 
-EXPOSE 3000
+# expose rails port and azure ssh ports
+EXPOSE 3000 8000 2222
+# start ssh service
+RUN rc-update add sshd
+# start rails server
 CMD ["bundle", "exec", "rails", "s"]

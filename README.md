@@ -35,9 +35,11 @@ This tutorial is used to deploy custom docker for [Azure app service](https://do
 
 ### staging
 
-1. Build `docker build -t supersaver .`
+1. Build `docker build -t supersaver .` and `docker-compose up -d`
 2. Do it once `docker tag supersaver supersavercontainer.azurecr.io/supersaver:v1.0.0`
-3. Push `docker push supersavercontainer.azurecr.io/supersaver:v1.0.0`
+3. Get Azure login creds `az acr credential show --name supersavercontainer`
+4. Now login to Azure docker `docker login supersavercontainer.azurecr.io --username supersavercontainer`
+4. Push `docker push supersavercontainer.azurecr.io/supersaver:v1.0.0`
 
 ### production
 
