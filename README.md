@@ -5,20 +5,40 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+- Ruby version: 2.7
 
-* System dependencies
+- System dependencies
 
-* Configuration
+- Configuration
 
-* Database creation
+  Docker with ruby alpine so check how to use apk
 
-* Database initialization
+- Database creation
 
-* How to run the test suite
+  `rails db:create`
 
-* Services (job queues, cache servers, search engines, etc.)
+- Database initialization
 
-* Deployment instructions
+  `rails db:migrate` and `rails db:seed`
 
-* ...
+- How to run the test suite
+
+  No test suites for now 😞
+
+- Services (job queues, cache servers, search engines, etc.)
+
+  N/A 😞
+
+- Deployment instructions
+
+This tutorial is used to deploy custom docker for [Azure app service](https://docs.microsoft.com/en-us/azure/app-service/containers/tutorial-custom-docker-image)
+
+### staging
+
+1. Build `docker build -t supersaver .`
+2. Do it once `docker tag supersaver supersavercontainer.azurecr.io/supersaver:v1.0.0`
+3. Push `docker push supersavercontainer.azurecr.io/supersaver:v1.0.0`
+
+### production
+
+- Same as staging
