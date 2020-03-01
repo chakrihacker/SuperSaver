@@ -25,7 +25,6 @@ ENV NODE_ENV='production'
 ENV RACK_ENV='production'
 
 # Adding gems
-RUN gem install bundler
 COPY Gemfile* package.json yarn.lock ./
 RUN bundle config set without 'development test'
 RUN bundle install
@@ -34,7 +33,7 @@ RUN bundle install
 COPY . $RAILS_ROOT
 
 # clean and compile rails assets
-# RUN bin/rails assets:clean
+RUN bin/rails assets:clean
 RUN bin/rails assets:precompile
 
 # expose rails port and azure ssh ports
