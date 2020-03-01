@@ -60,5 +60,9 @@ group :test do
   gem 'webdrivers'
 end
 
+group :staging do
+  gem 'faker' # Faker is used to easily generate fake data: names, addresses, phone numbers, etc.
+end
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
