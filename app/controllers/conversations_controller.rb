@@ -79,6 +79,8 @@ class ConversationsController < ApplicationController
         content: params[:content]
       )
       conversation.messages.append(message)
+    else
+      conversation.messages
     end
     render json: { status: :ok, conversation: conversation },
            status: :ok

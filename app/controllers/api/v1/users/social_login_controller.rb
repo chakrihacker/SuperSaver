@@ -6,8 +6,6 @@ class Api::V1::Users::SocialLoginController < Api::BaseController
     if user[:errors].nil?
       @user = User.where(email: user['email']).first
       unless @user
-        puts user
-        puts 'here'
         password = Devise.friendly_token[0, 20]
         puts user[:email]
         @user = User.new(email: user['email'], name: user['name'], password: password)
