@@ -72,12 +72,14 @@ class ConversationsController < ApplicationController
       slug,
       params.fetch(:description, '')
     )
-    message = Message.new(
-      user_id: current_user.id,
-      conversation_id: conversation.id,
-      content: params[:content]
-    )
-    conversation.messages.append(message)
+    if params[:content]
+      message = Message.new(
+        user_id: current_user.id,
+        conversation_id: conversation.id,
+        content: params[:content]
+      )
+      conversation.messages.append(message)
+    end
     render json: { status: :ok, conversation: conversation },
            status: :ok
   end
