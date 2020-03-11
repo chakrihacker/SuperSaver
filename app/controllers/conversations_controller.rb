@@ -70,7 +70,7 @@ class ConversationsController < ApplicationController
     conversation = Conversation.create_with_users(
       [current_user, conversation_recipient],
       slug,
-      params.fetch(:description, '')
+      params.fetch(:conversation_name, '')
     )
     if params[:content]
       message = Message.new(

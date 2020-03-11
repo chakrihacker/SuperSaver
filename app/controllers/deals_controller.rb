@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# All actions about deal
 class DealsController < ApplicationController
   before_action :authenticate_user_for_api, except: [:index]
   before_action :set_deal, only: [:show, :edit, :update, :destroy]
@@ -74,13 +77,16 @@ class DealsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_deal
-      @deal = Deal.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def deal_params
-      params.require(:deal).permit(:deal_type, :name, :description, :vendor, :is_local_deal, :latitude, :longitude, :status, :end_date, :min_price, :cash_back, :selling_price, :user_id, :category_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_deal
+    @deal = Deal.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def deal_params
+    params.require(:deal).permit(:deal_type, :name, :description, :vendor, :is_local_deal, :latitude,
+                                 :longitude, :status, :end_date, :min_price, :cash_back, :selling_price, :user_id,
+                                 :category_id)
+  end
 end

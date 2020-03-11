@@ -3,15 +3,15 @@ class Conversation < ApplicationRecord
   has_many :conversation_memberships, dependent: :destroy
   has_many :users, through: :conversation_memberships
 
-  def self.create_with_users(users, slug, description = "")
+  def self.create_with_users(users, slug, conversation_name = '')
     conversation = Conversation.find_by(slug: slug)
     if conversation
       #  do something
     else
       conversation = create(
         conversation_type: 'direct',
-        conversation_name: 'New Conversation',
-        description: description,
+        conversation_name: conversation_name,
+        description: '',
         slug: slug,
         status: 'active'
       )
