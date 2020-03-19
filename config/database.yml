@@ -27,9 +27,9 @@ staging:
 
 production:
   <<: *default
-  database: supersaver
-  username: <%= ENV["POSTGRES_USERNAME"] %>
-  password: <%= ENV["POSTGRES_PASSWORD"] %>
-  host: <%= ENV["POSTGRES_HOSTNAME"] %>
+  database: <%= ENV["POSTGRESQL_DATABASE"] %>
+  username: <%= ENV["POSTGRESQL_USERNAME"] %>
+  password: <%= ENV["POSTGRESQL_PASSWORD"] %>
+  host: <%= ENV["POSTGRESQL_ADDRESS"] %>
   port: <%= ENV["POSTGRES_PORT"] %>
   sslmode: require
