@@ -32,4 +32,4 @@ production:
   password: <%= ENV["POSTGRESQL_PASSWORD"] %>
   host: <%= ENV["POSTGRESQL_ADDRESS"] %>
   port: <%= ENV["POSTGRES_PORT"] %>
-  sslmode: require
+  sslmode: prefer
