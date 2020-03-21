@@ -31,5 +31,5 @@ production:
   username: <%= ENV["POSTGRESQL_USERNAME"] %>
   password: <%= ENV["POSTGRESQL_PASSWORD"] %>
   host: <%= ENV["POSTGRESQL_ADDRESS"] %>
-  port: <%= ENV["POSTGRES_PORT"] %>
+  port: <%= ENV["POSTGRESQL_PORT"] %>
   sslmode: prefer
