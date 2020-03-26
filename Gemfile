@@ -26,7 +26,7 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
-gem 'aws-sdk-s3', require: false # Official AWS Ruby gem for Amazon Simple Storage Service (Amazon S3).
+# gem 'aws-sdk-s3', require: false # Official AWS Ruby gem for Amazon Simple Storage Service (Amazon S3).
 gem 'azure-storage', require: false # Microsoft Azure Storage Blob Client Library for Ruby
 gem 'devise' # Flexible authentication solution for Rails with Warden
 gem 'figaro' # Simple, Heroku-friendly Rails app configuration using ENV and a single YAML file
