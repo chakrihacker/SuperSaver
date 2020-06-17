@@ -8,9 +8,9 @@ gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
-gem 'sass-rails', '>= 6'
+gem 'sass-rails', '>= 6.0.0'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '~> 4.0'
+gem 'webpacker', '~> 4.2', '>= 4.2.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -28,7 +28,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 # gem 'aws-sdk-s3', require: false # Official AWS Ruby gem for Amazon Simple Storage Service (Amazon S3).
 gem 'azure-storage', require: false # Microsoft Azure Storage Blob Client Library for Ruby
-gem 'devise' # Flexible authentication solution for Rails with Warden
+gem 'devise' , '>= 4.7.1' # Flexible authentication solution for Rails with Warden
 gem 'figaro' # Simple, Heroku-friendly Rails app configuration using ENV and a single YAML file
 gem 'honeybadger' # Make managing application errors a more pleasant experience.
 gem 'httparty' # Makes http fun again!
@@ -45,7 +45,7 @@ end
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'web-console', '>= 3.3.0'
+  gem 'web-console', '>= 4.0.1'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
@@ -54,7 +54,7 @@ end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
+  gem 'capybara', '>= 3.31.0'
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
