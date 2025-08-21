@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.7.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
+gem 'rails', '~> 7.1.5', '>= 7.1.5.2'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
@@ -33,7 +33,7 @@ gem 'figaro' # Simple, Heroku-friendly Rails app configuration using ENV and a s
 gem 'honeybadger' # Make managing application errors a more pleasant experience.
 gem 'httparty' # Makes http fun again!
 gem 'jwt' # A pure ruby implementation of the RFC 7519 OAuth JSON Web Token (JWT) standard.
-gem 'kaminari' # Kaminari is a Scope & Engine based, clean, powerful, agnostic, customizable and sophisticated paginator for Rails 4+
+gem 'kaminari' , '>= 1.2.1' # Kaminari is a Scope & Engine based, clean, powerful, agnostic, customizable and sophisticated paginator for Rails 4+
 gem 'pg' # Pg is the Ruby interface to the {PostgreSQL RDBMS}
 gem 'simple_command' # Easy way to build and manage commands (service objects)
 
